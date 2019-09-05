@@ -1,0 +1,1 @@
+from .eoldialogs import EolDialogsXBlock

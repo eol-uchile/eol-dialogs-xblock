@@ -1,0 +1,9 @@
+/* CSS for EolDialogsXBlock */
+
+.eoldialogs_block .count {
+    font-weight: bold;
+}
+
+.eoldialogs_block p {
+    cursor: pointer;
+}
