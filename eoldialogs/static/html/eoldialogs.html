@@ -1,5 +1,9 @@
 <div class="eoldialogs_block">
-<p>EolDialogsXBlock: count is now
-    <span class='count'>{self.count}</span> (click me to increment).
-</p>
+    <div class="{{ xblock.side }}">
+        <div class="personaje" style="background-image: url({{ xblock.image_url }});"></div>
+        <div class="cola" style="background-color: {{ xblock.background_color }};"></div>
+        <div class="dialogo" style="background-color: {{ xblock.background_color }}; color: {{ xblock.text_color }};">
+            {{xblock.content | safe }}
+        </div>
+    </div>
 </div>

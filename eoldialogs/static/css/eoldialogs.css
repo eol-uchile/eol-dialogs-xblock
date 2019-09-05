@@ -1,9 +1,85 @@
-/* CSS for EolDialogsXBlock */
 
-.eoldialogs_block .count {
-    font-weight: bold;
+.eoldialogs_block .personaje{
+    width: 100px;
+    height: 115px;
+    background-repeat: no-repeat;
+    background-position: center; 
 }
 
-.eoldialogs_block p {
-    cursor: pointer;
+.eoldialogs_block .Izquierda ,
+.eoldialogs_block .Derecha{
+    position: relative;
+    width:800px;
+    color:#000;
+    min-height: 115px;
+    padding:20px 0;
+    margin: auto;
+    box-sizing: border-box; 
+    overflow: hidden;
+}
+
+.eoldialogs_block .Izquierda .personaje{
+    left: 10px;
+    position: absolute;
+    top:0;
+    z-index:5;
+}
+
+.eoldialogs_block .Derecha .personaje{
+    right: 10px;
+    position: absolute;
+    top:0;
+    z-index:5;
+}
+
+.eoldialogs_block .dialogo p {
+    margin-bottom: 0 !important;
+}
+
+.eoldialogs_block .Izquierda .dialogo{
+    left: 150px; 
+    display:table; 
+    max-width: 505px;
+}
+
+.eoldialogs_block .Derecha .dialogo{
+    right: 150px;
+    float: right;
+    text-align: right; 
+    display:table;
+    max-width: 505px;
+}
+
+.eoldialogs_block .Izquierda .dialogo,
+.eoldialogs_block .Derecha .dialogo
+{
+    position: relative;
+    min-width: 200px;
+    box-sizing: border-box;
+    padding: 30px;
+    border-radius: 15px;
+    min-height: 78px;
+	display: table-cell; vertical-align: middle;
+	 width: -webkit-max-content;
+	 width: -moz-max-content;
+	 width: max-content; 
+}
+.eoldialogs_block .Izquierda .cola{
+    left: 103px;
+    background-image: url(https://static.cmm.uchile.cl/global2/cola_izq.png);
+}
+
+.eoldialogs_block .Derecha .cola{
+    right: 103px;
+    background-image: url(https://static.cmm.uchile.cl/global2/cola_der.png);
+}
+
+.eoldialogs_block .Izquierda .cola,
+.eoldialogs_block .Derecha .cola{
+    position: absolute;
+    box-sizing: border-box;
+    top:35px;
+    width: 47px;
+    height: 28px;
+    z-index: 4;
 }
