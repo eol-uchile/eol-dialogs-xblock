@@ -1,7 +1,7 @@
 
 .eoldialogs_block .personaje{
-    width: 100px;
-    height: 115px;
+    width: 130px;
+    height: 100%;
     background-repeat: no-repeat;
     background-position: center; 
 }
@@ -37,13 +37,13 @@
 }
 
 .eoldialogs_block .Izquierda .dialogo{
-    left: 150px; 
+    left: 180px; 
     display:table; 
     max-width: 505px;
 }
 
 .eoldialogs_block .Derecha .dialogo{
-    right: 150px;
+    right: 180px;
     float: right;
     text-align: right; 
     display:table;
@@ -65,12 +65,12 @@
 	 width: max-content; 
 }
 .eoldialogs_block .Izquierda .cola{
-    left: 103px;
+    left: 133px;
     background-image: url(https://static.cmm.uchile.cl/global2/cola_izq.png);
 }
 
 .eoldialogs_block .Derecha .cola{
-    right: 103px;
+    right: 133px;
     background-image: url(https://static.cmm.uchile.cl/global2/cola_der.png);
 }
 
