@@ -83,3 +83,89 @@
     height: 28px;
     z-index: 4;
 }
+
+.eoldialogs_block .Izquierda .responder{
+    position: relative;
+    padding: 0 0 10px 0;
+    top: 10px;
+    margin-left: 180px;
+}
+
+.eoldialogs_block .Derecha .responder{
+    position: relative;
+    float:right;
+    padding: 0 0 10px 0;
+    top: 10px;
+    margin-right: 180px;
+}
+
+.eoldialogs_block .submit {
+    height: 40px;
+    vertical-align: middle;
+    border-color: #0075b4;
+    background: #0075b4;
+    color: #fcfcfc;
+    text-shadow: none;
+    box-shadow: none;
+    border-width: 1px;
+    border-radius: 0.1875rem;
+    width: auto;
+    height: auto;
+    padding: 5px 10px;
+    font-weight: normal;
+    text-shadow: none;
+    text-transform: capitalize;
+    cursor: pointer;
+  }
+  
+.eoldialogs_block .submit:hover {
+    background-color: #065683;
+ }
+
+.eoldialogs_block .submit[disabled=disabled], .vof_block .action .check:disabled {
+    border-color: #d2d0d0;
+    background: #f2f3f3;
+    color: #676666;
+    cursor:auto;
+    border-style: solid;
+}
+
+.eoldialogs_block .submission-feedback{
+    padding: 10px;
+    color: #5e5e5e;
+    font-size: 0.9em;
+}
+
+.eoldialogs_block .notificacion{
+    margin-top: 10px;
+    padding: 10px;
+    font-size: 14px;
+}
+
+.eoldialogs_block .notificacion img{
+    vertical-align: middle;
+}
+
+.eoldialogs_block .inputdialogo{
+    width:42px;
+}
+
+.eoldialogs_block .button_show_answers{
+    font-size:14px;
+    cursor: pointer;
+    color: #0066a2;
+    padding: 10px;
+    font-weight: 400;
+}
+
+.eoldialogs_block .the_answer{
+    position: relative;
+    padding: 20px 20px 0px 20px;
+    font-size: 12px;
+    font-style: italic;
+    color: #5e5e5e;
+}
+
+.eoldialogs_block .Derecha .the_answer{
+    float: right;
+}

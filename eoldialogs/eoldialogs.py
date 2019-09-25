@@ -3,7 +3,7 @@ import pkg_resources
 from django.template import Context, Template
 
 from xblock.core import XBlock
-from xblock.fields import Integer, Scope, String
+from xblock.fields import Integer, Scope, String, Boolean, Dict, Float
 from xblock.fragment import Fragment
 from xblockutils.studio_editable import StudioEditableXBlockMixin
 
@@ -61,10 +61,65 @@ class EolDialogsXBlock(StudioEditableXBlockMixin, XBlock):
         resettable_editor=False,
         default="<p>Contenido del dialogo.</p>", 
         scope=Scope.settings,
-        help="Indica el contenido del dialogo"
+        help=_("Indica el contenido del dialogo, si se quieren incluir entradas de texto," 
+            "usar el formato &lt;span class='inputdialogo'&gt;respuesta correcta&lt;/span&gt; y si se quieren "
+            "incluir dropdowns &lt;span class='dropdowndialogo'&gt;opcion incorrecta,(opcioncorrecta),opcion incorrecta&lt;/span&gt;"
+        )
     )
 
-    editable_fields = ('image_url', 'background_color', 'text_color', 'side', 'content')
+    answers = Dict(
+        help=_(
+            'Respuestas de las preguntas'
+        ),
+        default={},
+        scope=Scope.settings,
+    )
+
+    student_answers = Dict(
+        help=_(
+            'Respuestas del estudiante a las preguntas'
+        ),
+        default={},
+        scope=Scope.user_state,
+    )
+
+    max_attempts = Integer(
+        display_name=_('Nro de Intentos'),
+        help=_(
+            'Nro de veces que el estudiante puede intentar responder'
+        ),
+        default=2,
+        values={'min': 1},
+        scope=Scope.settings,
+    )
+
+    weight = Integer(
+        display_name='Weight',
+        help='Entero que representa el peso del problema',
+        default=1,
+        values={'min': 0},
+        scope=Scope.settings,
+    )
+
+    attempts = Integer(
+        default=0,
+        scope=Scope.user_state,
+    )
+
+    show_answers = Boolean(
+        display_name='Mostrar Respuesta',
+        help="Mostrar boton de mostrar respuestas", 
+        default=False,
+        scope=Scope.settings)
+
+    score = Float(
+        default=0.0,
+        scope=Scope.user_state,
+    )
+
+    has_score = True
+
+    editable_fields = ('image_url', 'background_color', 'text_color', 'side', 'content', 'max_attempts', 'weight', 'show_answers', 'answers')
 
     def resource_string(self, path):
         """Handy helper for getting resources from our kit."""
@@ -76,13 +131,42 @@ class EolDialogsXBlock(StudioEditableXBlockMixin, XBlock):
         template = self.render_template('static/html/eoldialogs.html', context_html)
         frag = Fragment(template)
         frag.add_css(self.resource_string("static/css/eoldialogs.css"))
+        frag.add_javascript(self.resource_string("static/js/src/utils.js"))
         frag.add_javascript(self.resource_string("static/js/src/eoldialogs.js"))
-        frag.initialize_js('EolDialogsXBlock')
+        settings = {
+            'image_path': self.runtime.local_resource_url(self, 'public/images/')
+        }
+        frag.initialize_js('EolDialogsXBlock', json_args=settings)
         return frag
+        
+    def studio_view(self, context):
+        """
+        Render a form for editing this XBlock
+        """
+        context = {'fields': []}
+        # Build a list of all the fields that can be edited:
+        for field_name in self.editable_fields:
+            field = self.fields[field_name]
+            assert field.scope in (Scope.content, Scope.settings), (
+                "Only Scope.content or Scope.settings fields can be used with "
+                "StudioEditableXBlockMixin. Other scopes are for user-specific data and are "
+                "not generally created/configured by content authors in Studio."
+            )
+            field_info = self._make_field_info(field_name, field)
+            if field_info is not None:
+                context["fields"].append(field_info)
+        template = self.render_template('static/html/studio_edit.html', context)
+        fragment = Fragment(template)
+        fragment.add_javascript(self.resource_string("static/js/src/utils.js"))
+        fragment.add_javascript(self.resource_string("static/js/src/studio_edit.js"))
+        fragment.initialize_js('StudioEditableXBlockMixin')
+        return fragment
 
     def get_context(self):
         return {
             'xblock': self,
+            'indicator_class': self.get_indicator_class(),
+            'image_path' : self.runtime.local_resource_url(self, 'public/images/'),
             'location': str(self.location).split('@')[-1]
         }
 
@@ -90,4 +174,67 @@ class EolDialogsXBlock(StudioEditableXBlockMixin, XBlock):
         template_str = self.resource_string(template_path)
         template = Template(template_str)
         return template.render(Context(context))
+
+
+    @XBlock.json_handler
+    def savestudentanswers(self, data, suffix=''):  # pylint: disable=unused-argument
+        self.student_answers = data['student_answers']
+        #check correctness
+        buenas = 0.0
+        malas = 0.0
+        total = len(self.student_answers)
+
+        for k,v in self.student_answers.items():
+            if v == self.answers[k]:
+                buenas += 1
+        
+        malas = (total-buenas)
+
+        #update score and classes
+        self.score = float(buenas/(malas+buenas))
+        ptje = self.weight*self.score
+        try:
+            self.runtime.publish(
+                self,
+                'grade',
+                {
+                    'value': ptje,
+                    'max_value': self.weight
+                }
+            )
+            self.attempts += 1
+        except IntegrityError:
+            pass
+        #return to show score
+        return {'max_attempts': self.max_attempts, 'attempts': self.attempts, 'score':self.score, 'indicator_class': self.get_indicator_class() }
+
+    @XBlock.json_handler
+    def getanswers(self, data, suffix=''):
+        return {'answers': self.answers}
+
+    def get_indicator_class(self):
+        indicator_class = 'unanswered'
+        if self.attempts:
+            if self.score >= 1:
+                indicator_class = 'correct'
+            else:
+                indicator_class = 'incorrect'
+        return indicator_class
+
+
+    @staticmethod
+    def workbench_scenarios():
+        """A canned scenario for display in the workbench."""
+        return [
+            ("EolDialogsXBlock",
+             """<eoldialogs/>
+             """),
+            ("Multiple EolDialogsXBlock",
+             """<vertical_demo>
+                <eoldialogs/>
+                <eoldialogs/>
+                <eoldialogs/>
+                </vertical_demo>
+             """),
+        ]
     
