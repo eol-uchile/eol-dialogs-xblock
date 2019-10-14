@@ -64,7 +64,16 @@ class EolDialogsXBlock(StudioEditableXBlockMixin, XBlock):
         help="Indica el contenido del dialogo"
     )
 
-    editable_fields = ('image_url', 'background_color', 'text_color', 'side', 'content')
+    text = String(
+        display_name=_("Contenido del dialogo"), 
+        multiline_editor='html', 
+        resettable_editor=False,
+        default=_("<p>Contenido del dialogo.</p>"), 
+        scope=Scope.settings,
+        help=_("Indica el contenido del dialogo")
+    )
+
+    editable_fields = ('image_url', 'background_color', 'text_color', 'side', 'content', 'text')
 
     def resource_string(self, path):
         """Handy helper for getting resources from our kit."""
