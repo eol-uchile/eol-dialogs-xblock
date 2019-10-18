@@ -83,3 +83,16 @@
     height: 28px;
     z-index: 4;
 }
+
+/* CSS for Media theme */
+
+.eoldialogs_block.Media .Izquierda .dialogo,
+.eoldialogs_block.Media .Derecha .dialogo
+{
+    border-radius: 30px;
+}
+
+.eoldialogs_block.Media .Izquierda .cola,
+.eoldialogs_block.Media .Derecha .cola{
+    top:47px;
+}

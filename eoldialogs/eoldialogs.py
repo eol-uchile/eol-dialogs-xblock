@@ -64,7 +64,16 @@ class EolDialogsXBlock(StudioEditableXBlockMixin, XBlock):
         help=_("Indica el contenido del dialogo")
     )
 
-    editable_fields = ('image_url', 'background_color', 'text_color', 'side', 'text')
+
+    theme = String(
+        display_name = _("Estilo"),
+        help = _("Cambiar estilo de la pregunta"),
+        default = "SumaySigue",
+        values = ["SumaySigue", "Media"],
+        scope = Scope.settings
+    )
+
+    editable_fields = ('image_url', 'background_color', 'text_color', 'side', 'text', 'theme')
 
     def resource_string(self, path):
         """Handy helper for getting resources from our kit."""
@@ -91,3 +100,19 @@ class EolDialogsXBlock(StudioEditableXBlockMixin, XBlock):
         template = Template(template_str)
         return template.render(Context(context))
     
+        # workbench while developing your XBlock.
+    @staticmethod
+    def workbench_scenarios():
+        """A canned scenario for display in the workbench."""
+        return [
+            ("EolDialogsXBlock",
+             """<eoldialogs/>
+             """),
+            ("Multiple EolDialogsXBlock",
+             """<vertical_demo>
+                <eoldialogs/>
+                <eoldialogs/>
+                <eoldialogs/>
+                </vertical_demo>
+             """),
+        ]
