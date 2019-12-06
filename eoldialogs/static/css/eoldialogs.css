@@ -86,13 +86,24 @@
 
 /* CSS for Media theme */
 
-.eoldialogs_block.Media .Izquierda .dialogo,
-.eoldialogs_block.Media .Derecha .dialogo
-{
-    border-radius: 30px;
-}
-
 .eoldialogs_block.Media .Izquierda .cola,
 .eoldialogs_block.Media .Derecha .cola{
-    top:47px;
+    display:none;
+}
+
+.eoldialogs_block.Media .personaje{
+    background-size: 95px;
+    top:5px;
+}
+
+.eoldialogs_block.Media .Izquierda .dialogo {
+    left: 140px;
+    max-width: 500px!important;
+    width: 500px;
+}
+
+.eoldialogs_block.Media .Derecha .dialogo {
+    right: 140px;
+    max-width: 500px!important;
+    width: 500px;
 }

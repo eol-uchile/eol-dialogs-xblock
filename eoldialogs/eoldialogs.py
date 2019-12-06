@@ -110,7 +110,15 @@ class EolDialogsXBlock(StudioEditableXBlockMixin, XBlock):
              """),
             ("Multiple EolDialogsXBlock",
              """<vertical_demo>
-                <eoldialogs/>
+                <eoldialogs
+                theme='Media'
+                image_url = 'https://static.sumaysigue.uchile.cl/SySMedia/produccion/EPI/T01/A01/img/juanr.png'
+                />
+                <eoldialogs
+                theme='Media'
+                image_url = 'https://static.sumaysigue.uchile.cl/SySMedia/produccion/EPI/T01/A01/img/juanr.png'
+                side = 'Derecha'
+                />
                 <eoldialogs/>
                 <eoldialogs/>
                 </vertical_demo>
