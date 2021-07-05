@@ -73,7 +73,7 @@ class EolDialogsXBlock(StudioEditableXBlockMixin, XBlock):
         scope = Scope.settings
     )
 
-    editable_fields = ('image_url', 'background_color', 'text_color', 'side', 'text', 'theme')
+    editable_fields = ('display_name', 'image_url', 'background_color', 'text_color', 'side', 'text', 'theme')
 
     def resource_string(self, path):
         """Handy helper for getting resources from our kit."""
