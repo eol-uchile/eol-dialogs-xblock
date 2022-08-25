@@ -110,9 +110,12 @@
 
 /* CSS for RedFid theme */
 
-.eoldialogs_block.RedFid .Izquierda .cola,
+.eoldialogs_block.RedFid .Izquierda .cola{
+    background-image: url(https://static.sumaysigue.uchile.cl/cmmeduformacion/produccion/assets/img/cola_izq_border.png);
+}
+
 .eoldialogs_block.RedFid .Derecha .cola{
-    background-image: url(https://static.cmm.uchile.cl/global2/cola_izq.png);
+    background-image: url(https://static.sumaysigue.uchile.cl/cmmeduformacion/produccion/assets/img/cola_izq_border.png);
 }
 
 .eoldialogs_block.RedFid .personaje{
