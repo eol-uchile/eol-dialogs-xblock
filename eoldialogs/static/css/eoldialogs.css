@@ -14,8 +14,8 @@
     min-height: 115px;
     padding:20px 0;
     margin: auto;
-    /*box-sizing: border-box; 
-    overflow: hidden;*/
+    box-sizing: border-box; 
+    overflow: hidden;
 }
 
 .eoldialogs_block .Izquierda .personaje{
@@ -112,7 +112,7 @@
 
 .eoldialogs_block.RedFid .Izquierda .cola,
 .eoldialogs_block.RedFid .Derecha .cola{
-    
+    background-image: url(https://static.cmm.uchile.cl/global2/cola_izq.png);
 }
 
 .eoldialogs_block.RedFid .personaje{
@@ -121,12 +121,15 @@
 
 .eoldialogs_block.RedFid .Izquierda .dialogo {
 
-    border-color: black;
-    border: 6px !important;
+    box-sizing: border-box; 
+    overflow: hidden;
+    border:  4px solid;
+
+    
 }
 
 .eoldialogs_block.RedFid .Derecha .dialogo {
 
     border-color: black;
-    border: 6px !important;
+    border: 6px ;
 }
