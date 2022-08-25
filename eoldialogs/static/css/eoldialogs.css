@@ -121,15 +121,14 @@
 
 .eoldialogs_block.RedFid .Izquierda .dialogo {
 
-    box-sizing: border-box; 
-    overflow: hidden;
     border:  4px solid;
+    background-color: #FFF0 !important;
 
     
 }
 
 .eoldialogs_block.RedFid .Derecha .dialogo {
 
-    border-color: black;
-    border: 6px ;
+    border:  4px solid;
+    background-color: #FFF0 !important; 
 }
