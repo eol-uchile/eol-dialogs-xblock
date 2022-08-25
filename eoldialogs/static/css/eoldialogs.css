@@ -14,8 +14,8 @@
     min-height: 115px;
     padding:20px 0;
     margin: auto;
-    box-sizing: border-box; 
-    overflow: hidden;
+    /*box-sizing: border-box; 
+    overflow: hidden;*/
 }
 
 .eoldialogs_block .Izquierda .personaje{
