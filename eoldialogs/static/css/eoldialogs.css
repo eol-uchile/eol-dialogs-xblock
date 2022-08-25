@@ -107,3 +107,33 @@
     max-width: 630px!important;
     width: 630px;
 }
+
+/* CSS for Media theme */
+
+.eoldialogs_block.RedFid .Izquierda .cola,
+.eoldialogs_block.RedFid .Derecha .cola{
+    
+}
+
+.eoldialogs_block.RedFid .personaje{
+    background-size: 95px;
+    top:5px;
+}
+
+.eoldialogs_block.RedFid .Izquierda .dialogo {
+    left: 140px;
+    max-width: 630px!important;
+    width: 630px;
+    
+    border-color: black;
+    border: 6px;
+}
+
+.eoldialogs_block.RedFid .Derecha .dialogo {
+    right: 140px;
+    max-width: 630px!important;
+    width: 630px;
+
+    border-color: black;
+    border: 6px;
+}

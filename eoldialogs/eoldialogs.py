@@ -69,7 +69,7 @@ class EolDialogsXBlock(StudioEditableXBlockMixin, XBlock):
         display_name = _("Estilo"),
         help = _("Cambiar estilo de la pregunta"),
         default = "SumaySigue",
-        values = ["SumaySigue", "Media"],
+        values = ["SumaySigue", "Media","RedFid"],
         scope = Scope.settings
     )
 
