@@ -122,11 +122,11 @@
 .eoldialogs_block.RedFid .Izquierda .dialogo {
 
     border-color: black;
-    border: 6px;
+    border: 6px !important;
 }
 
 .eoldialogs_block.RedFid .Derecha .dialogo {
 
     border-color: black;
-    border: 6px;
+    border: 6px !important;
 }
