@@ -112,11 +112,20 @@
 
 .eoldialogs_block.RedFid .Izquierda .cola{
     background-image: url(https://static.sumaysigue.uchile.cl/cmmeduformacion/produccion/assets/img/cola_izq_border.png);
+    top: 45px;
+    width: 46px;
+    height: 25px;
+    left: 138px;
 }
 
 .eoldialogs_block.RedFid .Derecha .cola{
     background-image: url(https://static.sumaysigue.uchile.cl/cmmeduformacion/produccion/assets/img/cola_der_border.png);
+    top: 45px;
+    width: 46px;
+    height: 25px;
+    left: 616px;
 }
+
 
 .eoldialogs_block.RedFid .personaje{
 
