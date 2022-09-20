@@ -65,7 +65,7 @@ class EolDialogsXBlock(StudioEditableXBlockMixin, XBlock):
     character_name = String(
         display_name=_("Nombre del personaje (RedFid)"),
         help=_("Solo disponible en RedFid"),
-        default="Perico del Transito",
+        default="Firulais",
         scope=Scope.settings,
     )
 
