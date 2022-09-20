@@ -62,6 +62,13 @@ class EolDialogsXBlock(StudioEditableXBlockMixin, XBlock):
         scope = Scope.settings
     )
 
+    character_name = String(
+        display_name=_("Nombre del personaje (RedFid)"),
+        help=_("Solo disponible en RedFid"),
+        default="Perico del Transito",
+        scope=Scope.settings,
+    )
+
     text = String(
         display_name=_("Contenido del dialogo"), 
         multiline_editor='html', 
@@ -80,7 +87,7 @@ class EolDialogsXBlock(StudioEditableXBlockMixin, XBlock):
         scope = Scope.settings
     )
 
-    editable_fields = ('display_name', 'image_url', 'background_color','border_color', 'text_color', 'side', 'text', 'theme')
+    editable_fields = ('display_name', 'image_url', 'background_color','border_color', 'text_color', 'side', 'character_name', 'text', 'theme')
 
     def resource_string(self, path):
         """Handy helper for getting resources from our kit."""
