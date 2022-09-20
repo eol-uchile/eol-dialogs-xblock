@@ -135,7 +135,12 @@
 .eoldialogs_block.RedFid .nombrePerso{
     text-align: center;
     position: relative;
-    top: 114px;
+    top: 112px;
+    text-transform: uppercase;
+    color: #707070;
+    font-size: 10px;
+    font-weight: bold;
+
 }
 
 
