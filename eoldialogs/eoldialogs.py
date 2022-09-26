@@ -40,6 +40,13 @@ class EolDialogsXBlock(StudioEditableXBlockMixin, XBlock):
         scope=Scope.settings,
     )
 
+    border_color = String(
+        display_name=_("Color del borde"),
+        help=_("Color del borde del contenedor del dialogo"),
+        default="#F8E37B",
+        scope=Scope.settings,
+    )
+
     text_color = String(
         display_name=_("Color del texto"),
         help=_("Color del texto del dialogo"),
@@ -53,6 +60,13 @@ class EolDialogsXBlock(StudioEditableXBlockMixin, XBlock):
         default = "Izquierda",
         values = ["Izquierda", "Derecha"],
         scope = Scope.settings
+    )
+
+    character_name = String(
+        display_name=_("Nombre del personaje (RedFid)"),
+        help=_("Solo disponible en RedFid"),
+        default="Firulais",
+        scope=Scope.settings,
     )
 
     text = String(
@@ -69,11 +83,11 @@ class EolDialogsXBlock(StudioEditableXBlockMixin, XBlock):
         display_name = _("Estilo"),
         help = _("Cambiar estilo de la pregunta"),
         default = "SumaySigue",
-        values = ["SumaySigue", "Media"],
+        values = ["SumaySigue", "Media","RedFid"],
         scope = Scope.settings
     )
 
-    editable_fields = ('display_name', 'image_url', 'background_color', 'text_color', 'side', 'text', 'theme')
+    editable_fields = ('display_name', 'image_url', 'background_color','border_color', 'text_color', 'side', 'character_name', 'text', 'theme')
 
     def resource_string(self, path):
         """Handy helper for getting resources from our kit."""
