@@ -33,6 +33,13 @@ class EolDialogsXBlock(StudioEditableXBlockMixin, XBlock):
         scope=Scope.settings,
     )
 
+    image_size = Integer(
+        display_name=_("tamaño del personaje"),
+        help=_("(Solo en REDFID)"),
+        default=112,
+        scope=Scope.settings,
+    )
+
     flip_image = Boolean(
         display_name=_('Invertir personaje'),
         help=_('Invertir imagen del personaje'),
@@ -94,7 +101,7 @@ class EolDialogsXBlock(StudioEditableXBlockMixin, XBlock):
         scope = Scope.settings
     )
 
-    editable_fields = ('display_name', 'image_url', 'flip_image', 'background_color','border_color', 'text_color', 'side', 'character_name', 'text', 'theme')
+    editable_fields = ('display_name', 'image_url', 'image_size', 'flip_image', 'background_color','border_color', 'text_color', 'side', 'character_name', 'text', 'theme')
 
     def resource_string(self, path):
         """Handy helper for getting resources from our kit."""
