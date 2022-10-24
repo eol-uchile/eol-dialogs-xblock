@@ -3,7 +3,7 @@ import pkg_resources
 from django.template import Context, Template
 
 from xblock.core import XBlock
-from xblock.fields import Integer, Scope, String
+from xblock.fields import Integer, Boolean, Scope, String
 from xblock.fragment import Fragment
 from xblockutils.studio_editable import StudioEditableXBlockMixin
 
@@ -30,6 +30,20 @@ class EolDialogsXBlock(StudioEditableXBlockMixin, XBlock):
         display_name=_("URL del personaje"),
         help=_("Indica la URL a la imagen del personaje en el dialogo"),
         default="https://static.sumaysigue.uchile.cl/cmmeduformacion/produccion/assets/img/diag_aldo.png",
+        scope=Scope.settings,
+    )
+
+    image_size = Integer(
+        display_name=_("tamaño del personaje"),
+        help=_("(Solo en REDFID)"),
+        default=112,
+        scope=Scope.settings,
+    )
+
+    flip_image = Boolean(
+        display_name=_('Invertir personaje'),
+        help=_('Invertir imagen del personaje'),
+        default=False,
         scope=Scope.settings,
     )
 
@@ -87,7 +101,7 @@ class EolDialogsXBlock(StudioEditableXBlockMixin, XBlock):
         scope = Scope.settings
     )
 
-    editable_fields = ('display_name', 'image_url', 'background_color','border_color', 'text_color', 'side', 'character_name', 'text', 'theme')
+    editable_fields = ('display_name', 'image_url', 'image_size', 'flip_image', 'background_color','border_color', 'text_color', 'side', 'character_name', 'text', 'theme')
 
     def resource_string(self, path):
         """Handy helper for getting resources from our kit."""
