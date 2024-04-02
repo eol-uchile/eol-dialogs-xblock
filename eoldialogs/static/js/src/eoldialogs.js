@@ -10,6 +10,6 @@
 
 function EolDialogsXBlock(runtime, element) {
     $(function ($) {
-        
+        MathJax.Hub.Queue(["Typeset", MathJax.Hub]);// Renderiza latex nuevamente
     });
 }
