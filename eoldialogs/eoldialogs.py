@@ -92,7 +92,6 @@ class EolDialogsXBlock(StudioEditableXBlockMixin, XBlock):
         help=_("Indica el contenido del dialogo")
     )
 
-
     theme = String(
         display_name = _("Estilo"),
         help = _("Cambiar estilo de la pregunta"),
@@ -101,7 +100,15 @@ class EolDialogsXBlock(StudioEditableXBlockMixin, XBlock):
         scope = Scope.settings
     )
 
-    editable_fields = ('display_name', 'image_url', 'image_size', 'flip_image', 'background_color','border_color', 'text_color', 'side', 'character_name', 'text', 'theme')
+    globo = String(
+        display_name = _("globo"),
+        help = _("Cambiar tipo de globo de dialogo (solo SumaySigue)"),
+        default = "dialogo",
+        values = ["dialogo", "pensamiento"],
+        scope = Scope.settings
+    )
+
+    editable_fields = ('display_name', 'image_url', 'image_size', 'flip_image', 'background_color','border_color', 'text_color', 'side', 'character_name', 'text', 'theme','globo')
 
     def resource_string(self, path):
         """Handy helper for getting resources from our kit."""
