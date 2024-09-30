@@ -121,7 +121,10 @@ class EolDialogsXBlock(StudioEditableXBlockMixin, XBlock):
         frag = Fragment(template)
         frag.add_css(self.resource_string("static/css/eoldialogs.css"))
         frag.add_javascript(self.resource_string("static/js/src/eoldialogs.js"))
-        frag.initialize_js('EolDialogsXBlock')
+        settings = {
+            'location'  : str(self.location).split('@')[-1]
+        }
+        frag.initialize_js('EolDialogsXBlock', json_args=settings)
         return frag
 
     def get_context(self):
