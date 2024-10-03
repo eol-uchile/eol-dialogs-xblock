@@ -1,4 +1,4 @@
-<div class="eoldialogs_block {{ xblock.theme }}">
+<div class="eoldialogs_block {{ xblock.theme }}" id="dialog_{{ location }}">
     <div class="{{ xblock.side }}">
         <div class="personaje" style="background-image: url({{ xblock.image_url }}); {% if xblock.flip_image %} transform: scaleX(-1); {% endif %} {% if xblock.theme == "RedFid" %} background-size: {{ xblock.image_size }}px; {% endif %} "> {% if xblock.theme == "RedFid" %} <div class="nombrePerso" {% if xblock.flip_image %} style="transform: scaleX(-1);" {% endif %}>{{xblock.character_name}}</div>{% endif %}</div>
         <div class="cola" style=" background-color:
