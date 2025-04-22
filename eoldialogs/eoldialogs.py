@@ -1,7 +1,8 @@
+# Installed packages (via pip)
+from django.template import Context, Template
 import pkg_resources
 
-from django.template import Context, Template
-
+# Edx dependencies
 from xblock.core import XBlock
 from xblock.fields import Integer, Boolean, Scope, String
 from xblock.fragment import Fragment
@@ -9,7 +10,6 @@ from xblockutils.studio_editable import StudioEditableXBlockMixin
 
 # Make '_' a no-op so we can scrape strings
 _ = lambda text: text
-
 
 
 class EolDialogsXBlock(StudioEditableXBlockMixin, XBlock):
