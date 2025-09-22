@@ -4,7 +4,7 @@
 
 import os
 
-from setuptools import setup
+from setuptools import setup, find_packages
 
 
 def package_data(pkg, roots):
@@ -25,12 +25,12 @@ def package_data(pkg, roots):
 
 setup(
     name='eoldialogs-xblock',
-    version='0.1',
+    version='1.0.0',
+    author="Oficina EOL UChile",
+    author_email="eol-ing@uchile.cl",
     description='XBlock con dialogos Suma y Sigue de CMMEduFormacion',
     license='AGPL v3',
-    packages=[
-        'eoldialogs',
-    ],
+    packages=find_packages(),
     install_requires=[
         'XBlock',
     ],
