@@ -25,7 +25,7 @@ def package_data(pkg, roots):
 
 setup(
     name='eoldialogs-xblock',
-    version='1.0.0',
+    version='1.2.0',
     author="Oficina EOL UChile",
     author_email="eol-ing@uchile.cl",
     description='XBlock con dialogos Suma y Sigue de CMMEduFormacion',
