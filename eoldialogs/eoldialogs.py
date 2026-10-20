@@ -102,7 +102,7 @@ class EolDialogsXBlock(StudioEditableXBlockMixin, XBlock):
 
     globo = String(
         display_name = _("globo"),
-        help = _("Cambiar tipo de globo de dialogo (solo SumaySigue)"),
+        help = _("Cambiar tipo de globo de dialogo (SumaySigue y RedFid)"),
         default = "dialogo",
         values = ["dialogo", "pensamiento"],
         scope = Scope.settings
